@@ -19,23 +19,31 @@ namespace WayneCarCorps.MongoDBModels
             this.NumberOfSeats = numberOfSeats;
         }
 
-        [BsonElement("_id")]
+        [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
+        [BsonElement("model")]
         public string Model { get; set; }
 
+        [BsonElement("manufacturerId")]
         public int ManufacturerId { get; set; }
 
+        [BsonElement("year")]
         public int Year { get; set; }
 
+        [BsonElement("price")]
         public decimal Price { get; set; }
 
+        [BsonElement("carTypeId")]
         public int CarTypeId { get; set; }
 
+        [BsonElement("power")]
         public int Power { get; set; }
 
+        [BsonElement("colourId")]
         public int ColourId { get; set; }
 
+        [BsonElement("numberOfSeats")]
         public int NumberOfSeats { get; set; }
     }
 }

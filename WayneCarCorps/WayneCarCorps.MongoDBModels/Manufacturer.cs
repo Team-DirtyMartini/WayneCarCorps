@@ -13,11 +13,13 @@ namespace WayneCarCorps.MongoDBModels
             this.AddressId = addressId;
         }
 
-        [BsonElement("_id")]
+        [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
+        [BsonElement("name")]
         public string Name { get; set; }
 
+        [BsonElement("addressId")]
         public int AddressId { get; set; }
     }
 }
