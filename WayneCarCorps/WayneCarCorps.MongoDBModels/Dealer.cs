@@ -17,19 +17,25 @@ namespace WayneCarCorps.MongoDBModels
             this.Quantity = quantity;
         }
 
-        [BsonElement("_id")]
+        [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
+        [BsonElement("name")]
         public string Name { get; set; }
 
+        [BsonElement("addressId")]
         public int AddressId { get; set; }
 
+        [BsonElement("incomes")]
         public decimal Incomes { get; set; }
 
+        [BsonElement("expenses")]
         public decimal Expenses { get; set; }
 
+        [BsonElement("carId")]
         public int CarId { get; set; }
 
+        [BsonElement("quantity")]
         public int Quantity { get; set; }
     }
 }

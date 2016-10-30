@@ -13,11 +13,13 @@ namespace WayneCarCorps.MongoDBModels
             this.CountryId = countryId;
         }
 
-        [BsonElement("_id")]
+        [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
+        [BsonElement("addressLine")]
         public string AddressLine { get; set; }
 
+        [BsonElement("countryId")]
         public int CountryId { get; set; }
     }
 }
