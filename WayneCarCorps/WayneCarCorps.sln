@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelDataHandler", "ExcelDa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WayneCarCorps.MongoDBModels", "WayneCarCorps.MongoDBModels\WayneCarCorps.MongoDBModels.csproj", "{7EB8040C-6A07-4894-B2CB-8FE1544CEBC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDBOperator", "MongoDBExtractor\MongoDBOperator.csproj", "{2A698487-09B0-4E9E-BE70-F71E8D63DE65}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDBOperator", "MongoDBOperator\MongoDBOperator.csproj", "{2A698487-09B0-4E9E-BE70-F71E8D63DE65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

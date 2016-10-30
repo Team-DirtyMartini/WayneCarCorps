@@ -14,9 +14,9 @@ namespace MongoDBOperator
             return client;
         }
 
-        public IMongoDatabase GetDatabbase(IMongoClient client, string databaseName )
+        public IMongoDatabase GetDatabbase(IMongoClient client)
         {
-            IMongoDatabase database = client.GetDatabase(databaseName);
+            IMongoDatabase database = client.GetDatabase(MongoDatabaseName);
 
             return database;
         }
