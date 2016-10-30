@@ -31,5 +31,7 @@ namespace WayneCarCorps.Data
         public virtual IDbSet<Manufacturer> Manufacturers { get; set; }
 
         public virtual IDbSet<Model> Models { get; set; }
+
+        public virtual IDbSet<Sale> Sales { get; set; }
     }
 }
