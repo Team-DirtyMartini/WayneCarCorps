@@ -52,8 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseExtractor.cs" />
-    <Compile Include="CarsExtractor.cs" />
+    <Compile Include="Extractor.cs" />
     <Compile Include="Connector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

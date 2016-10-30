@@ -19,7 +19,7 @@ namespace WayneCarCorps.MongoDBModels
         [BsonElement("name")]
         public string Name { get; set; }
 
-        [BsonElement("addressId")]
+        [BsonElement("AddressId")]
         public int AddressId { get; set; }
     }
 }
