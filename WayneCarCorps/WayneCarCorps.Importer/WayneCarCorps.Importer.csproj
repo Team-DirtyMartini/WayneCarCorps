@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C9EC88E3-EFFB-4AE2-9934-41B7BE53E6FD}</ProjectGuid>
+    <ProjectGuid>{D7C01EDC-DE40-4F7C-9813-4F235C877873}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ExcelDataHandler</RootNamespace>
-    <AssemblyName>ExcelDataHandler</AssemblyName>
+    <RootNamespace>WayneCarCorps.Importer</RootNamespace>
+    <AssemblyName>WayneCarCorps.Importer</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,10 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNetZip, Version=1.10.1.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotNetZip.1.10.1\lib\net20\DotNetZip.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,17 +43,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExcelReader.cs" />
+    <Compile Include="Import.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MongoDBOperator\MongoDBOperator.csproj">
       <Project>{2A698487-09B0-4E9E-BE70-F71E8D63DE65}</Project>
       <Name>MongoDBOperator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WayneCarCorps.Data\WayneCarCorps.Data.csproj">
+      <Project>{85D53E79-E68B-4C3B-9AC7-D1708DDF071E}</Project>
+      <Name>WayneCarCorps.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WayneCarCorps.Models\WayneCarCorps.Models.csproj">
+      <Project>{3e883c2f-c80a-4647-b099-e29d79dab768}</Project>
+      <Name>WayneCarCorps.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\WayneCarCorps.MongoDBModels\WayneCarCorps.MongoDBModels.csproj">
       <Project>{7EB8040C-6A07-4894-B2CB-8FE1544CEBC5}</Project>
