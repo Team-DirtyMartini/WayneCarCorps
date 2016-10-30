@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Data.OleDb;
 using Ionic.Zip;
-using MongoDBOperator;
-using WayneCarCorps.MongoDBModels;
+using WayneCarCorps.Data;
+using WayneCarCorps.Models;
 
 namespace ExcelDataHandler
 {
@@ -23,8 +23,8 @@ namespace ExcelDataHandler
                     Console.WriteLine(currentZip);
                     if (currentZip.IndexOf("xls") >= 0)
                     {
-                        // Currently printing to console
-                        //TODO: Import in MSSQL
+                        //TODO: Importing in SQL, but need more info! 
+                        // No info in SQL Sevres, so it will throw 
                         GetExcelInformation(currentZip);
                     }
                 }
@@ -37,6 +37,8 @@ namespace ExcelDataHandler
             OleDbConnection dbConnection = new OleDbConnection(connectionString);
 
             dbConnection.Open();
+            var dbContext = new WayneCarCorpsContext();
+
             using (dbConnection)
             {
                 string xslStringCommand = @"SELECT * FROM [Sales$]";
@@ -52,15 +54,29 @@ namespace ExcelDataHandler
                         {
                             break;
                         }
-                        
+
                         double carId = (double)reader["CarId"];
                         double soldCars = (double)reader["SoldCars"];
                         double pricePerCar = (double)reader["PricePerCar"];
                         double income = (double)reader["Income"];
-                        
-                        Console.WriteLine($"Card id: {carId} - SoldCars: {soldCars} - PricePerCar: {pricePerCar} - Income: {income}");
+                        string dateOfReport = fileName.Substring(fileName.Length - 14, 10);
+                        DateTime date = DateTime.Parse(dateOfReport);
+
+                        var sale = new Sale()
+                        {
+                            CarId = (int)carId,
+                            SoldCars = (int)soldCars,
+                            PricePerCar = (int)pricePerCar,
+                            IncomeFromCar = (int)income,
+                            Date = date
+                        };
+
+                        dbContext.Sales.Add(sale);
+                       // Console.WriteLine($"Card id: {carId} - SoldCars: {soldCars} - PricePerCar: {pricePerCar} - Income: {income}");
                     }
                 }
+
+                dbContext.SaveChanges();
             }
         }
 
