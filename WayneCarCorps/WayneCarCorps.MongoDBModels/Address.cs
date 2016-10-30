@@ -16,10 +16,10 @@ namespace WayneCarCorps.MongoDBModels
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
-        [BsonElement("AddressLine")]
+        [BsonElement("addressLine")]
         public string AddressLine { get; set; }
 
-        [BsonElement("CountryId")]
+        [BsonElement("countryId")]
         public int CountryId { get; set; }
     }
 }

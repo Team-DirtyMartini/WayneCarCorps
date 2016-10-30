@@ -60,6 +60,7 @@
     <Compile Include="Dealer.cs" />
     <Compile Include="Interfaces\IMongoModel.cs" />
     <Compile Include="Manufacturer.cs" />
+    <Compile Include="Model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -13,8 +13,6 @@ namespace WayneCarCorps.MongoDBModels
             this.AddressId = addressId;
             this.Incomes = incomes;
             this.Expenses = expenses;
-            this.CarId = carId;
-            this.Quantity = quantity;
         }
 
         [BsonRepresentation(BsonType.ObjectId)]
@@ -31,11 +29,5 @@ namespace WayneCarCorps.MongoDBModels
 
         [BsonElement("expenses")]
         public decimal Expenses { get; set; }
-
-        [BsonElement("carId")]
-        public int CarId { get; set; }
-
-        [BsonElement("quantity")]
-        public int Quantity { get; set; }
     }
 }
