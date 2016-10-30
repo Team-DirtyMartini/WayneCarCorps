@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WayneCarCorps.Data;
-using WayneCarCorps.MongoDBModels;
+using WayneCarCorps.Models;
 
 
 namespace WayneCarCorps.Importer
@@ -18,13 +18,6 @@ namespace WayneCarCorps.Importer
             var cars  = extractor.GetEntitiesCollection("Cars"); */
         }
 
-        private static void ImportCars(Extractor<Car> extractor, WayneCarCorpsContext db)
-        {
-            var cars = extractor.GetEntitiesCollection("Cars");
-            foreach (var car in cars)
-            {
-                //var carToBeAdded = new WayneCarCorps.Models.Car
-            }
-        }
+    
     }
 }

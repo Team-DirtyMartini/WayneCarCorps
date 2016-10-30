@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WayneCarCorps.Models
 {
-    public class Address
+    public class Address 
     {
         private ICollection<Dealer> dealers;
         private ICollection<Manufacturer> manufacturers;

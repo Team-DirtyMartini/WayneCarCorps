@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,9 @@ namespace WayneCarCorps.Models
         public virtual int CarTypeId { get; set; }
 
         public virtual CarType CarType { get; set; }
+
+        [Column("Number of seats")]
+        public int NumberOfSeats { get; set; }
 
         public virtual ICollection<Car> Cars
         {

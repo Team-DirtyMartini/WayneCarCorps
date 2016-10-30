@@ -28,9 +28,6 @@ namespace WayneCarCorps.Models
 
         public virtual int DealerId { get; set; }
 
-        public virtual Dealer Dealer { get; set; }
-
-        [Column("Number of seats")]
-        public int NumberOfSeats { get; set; }
+        public virtual Dealer Dealer { get; set; }     
     }
 }
