@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Countries>
+  <Country>
+    <Name>Germany</Name>
+  </Country>
+  <Country>
+    <Name>Czech</Name>
+  </Country>
+  <Country>
+    <Name>Italy</Name>
+  </Country>
+  <Country>
+    <Name>France</Name>
+  </Country>
+  <Country>
+    <Name>Bulgaria</Name>
+  </Country>
+  <Country>
+    <Name>Burundi</Name>
+  </Country>
+</Countries>

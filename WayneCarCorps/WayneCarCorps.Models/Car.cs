@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace WayneCarCorps.Models
 {
-    public class Car
+    [Serializable]
+    public class Car 
     {
         public int Id { get; set; }
 
