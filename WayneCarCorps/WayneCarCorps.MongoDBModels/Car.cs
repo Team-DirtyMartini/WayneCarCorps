@@ -6,10 +6,10 @@ namespace WayneCarCorps.MongoDBModels
 {
     public class Car : IMongoModel
     {
-        public Car(string model, int year, decimal price, int power, int colourId, int dealerId)
+        public Car(int modelId, int year, decimal price, int power, int colourId, int dealerId)
         {
             this.Id = ObjectId.GenerateNewId().ToString();
-            this.Model = model;
+            this.ModelId = modelId;
             this.Year = year;
             this.Price = price;
             this.Power = power;
@@ -21,7 +21,7 @@ namespace WayneCarCorps.MongoDBModels
         public string Id { get; set; }
 
         [BsonElement("model")]
-        public string Model { get; set; }
+        public int ModelId { get; set; }
 
         [BsonElement("year")]
         public int Year { get; set; }
