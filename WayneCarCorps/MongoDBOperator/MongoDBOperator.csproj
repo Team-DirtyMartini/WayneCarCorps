@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Extractor.cs" />
     <Compile Include="Connector.cs" />
+    <Compile Include="Loader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
