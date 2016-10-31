@@ -52,9 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extractor.cs" />
-    <Compile Include="Connector.cs" />
-    <Compile Include="Loader.cs" />
+    <Compile Include="MongoDBExtractor.cs" />
+    <Compile Include="MongoDBConnector.cs" />
+    <Compile Include="MongoDBLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

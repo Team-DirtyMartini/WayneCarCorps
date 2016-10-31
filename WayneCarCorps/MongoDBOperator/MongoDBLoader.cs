@@ -4,13 +4,13 @@ using WayneCarCorps.MongoDBModels.Interfaces;
 
 namespace MongoDBOperator
 {
-    public class Loader<T>
+    public class MongoDBLoader<T>
     {
-        private Connector connector = new Connector();
+        private MongoDBConnector connector = new MongoDBConnector();
         private IMongoDatabase database;
         private IMongoClient client;
 
-        public Loader()
+        public MongoDBLoader()
         {
             client = connector.Connect();
             database = connector.GetDatabbase(client);

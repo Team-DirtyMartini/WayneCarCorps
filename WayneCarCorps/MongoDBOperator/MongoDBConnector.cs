@@ -2,7 +2,7 @@
 
 namespace MongoDBOperator
 {
-    public class Connector
+    public class MongoDBConnector
     {
         public const string MongoDBConnectionString = "mongodb://localhost";
         public const string MongoDatabaseName = "WayneCarCorps";
