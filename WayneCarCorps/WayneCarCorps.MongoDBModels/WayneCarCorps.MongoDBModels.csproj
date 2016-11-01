@@ -52,15 +52,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Address.cs" />
-    <Compile Include="Car.cs" />
-    <Compile Include="CarType.cs" />
-    <Compile Include="Colour.cs" />
-    <Compile Include="Country.cs" />
-    <Compile Include="Dealer.cs" />
+    <Compile Include="MongoAddress.cs" />
+    <Compile Include="OldMongoCar.cs" />
+    <Compile Include="MongoCarType.cs" />
+    <Compile Include="MongoColour.cs" />
+    <Compile Include="MongoCountry.cs" />
+    <Compile Include="MongoDealer.cs" />
     <Compile Include="Interfaces\IMongoModel.cs" />
-    <Compile Include="Manufacturer.cs" />
-    <Compile Include="Model.cs" />
+    <Compile Include="MongoManufacturer.cs" />
+    <Compile Include="MongoModel.cs" />
     <Compile Include="MongoCar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

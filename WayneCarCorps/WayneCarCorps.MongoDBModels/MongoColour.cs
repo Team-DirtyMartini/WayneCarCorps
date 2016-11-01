@@ -4,9 +4,9 @@ using WayneCarCorps.MongoDBModels.Interfaces;
 
 namespace WayneCarCorps.MongoDBModels
 {
-    public class Country : IMongoModel
+    public class MongoColour : IMongoModel
     {
-        public Country(string name)
+        public MongoColour(string name)
         {
             this.Id = ObjectId.GenerateNewId().ToString();
             this.Name = name;

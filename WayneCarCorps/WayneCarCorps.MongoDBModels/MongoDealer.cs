@@ -4,13 +4,15 @@ using WayneCarCorps.MongoDBModels.Interfaces;
 
 namespace WayneCarCorps.MongoDBModels
 {
-    public class Manufacturer : IMongoModel
+    public class MongoDealer : IMongoModel
     {
-        public Manufacturer(string name, int addressId)
+        public MongoDealer(string name, int addressId, decimal incomes, decimal expenses, int carId, int quantity)
         {
             this.Id = ObjectId.GenerateNewId().ToString();
             this.Name = name;
             this.AddressId = addressId;
+            this.Incomes = incomes;
+            this.Expenses = expenses;
         }
 
         [BsonRepresentation(BsonType.ObjectId)]
@@ -21,5 +23,11 @@ namespace WayneCarCorps.MongoDBModels
 
         [BsonElement("addressId")]
         public int AddressId { get; set; }
+
+        [BsonElement("incomes")]
+        public decimal Incomes { get; set; }
+
+        [BsonElement("expenses")]
+        public decimal Expenses { get; set; }
     }
 }

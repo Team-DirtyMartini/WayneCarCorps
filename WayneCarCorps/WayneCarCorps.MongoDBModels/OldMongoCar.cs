@@ -4,9 +4,9 @@ using WayneCarCorps.MongoDBModels.Interfaces;
 
 namespace WayneCarCorps.MongoDBModels
 {
-    public class Car : IMongoModel
+    public class OldMongoCar : IMongoModel
     {
-        public Car(int modelId, int year, decimal price, int power, int colourId, int dealerId)
+        public OldMongoCar(int modelId, int year, decimal price, int power, int colourId, int dealerId)
         {
             this.Id = ObjectId.GenerateNewId().ToString();
             this.ModelId = modelId;

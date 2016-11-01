@@ -4,9 +4,9 @@ using WayneCarCorps.MongoDBModels.Interfaces;
 
 namespace WayneCarCorps.MongoDBModels
 {
-    public class Address : IMongoModel
+    public class MongoAddress : IMongoModel
     {
-        public Address(string addressLine, int countryId)
+        public MongoAddress(string addressLine, int countryId)
         {
             this.Id = ObjectId.GenerateNewId().ToString();
             this.AddressLine = addressLine;

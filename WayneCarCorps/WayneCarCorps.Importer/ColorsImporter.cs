@@ -12,8 +12,8 @@ namespace WayneCarCorps.Importer
     public class ColorsImporter
     {
         private WayneCarCorpsContext db;
-        private IEnumerable<WayneCarCorps.MongoDBModels.Colour> colors;
-        public ColorsImporter(IEnumerable<WayneCarCorps.MongoDBModels.Colour> colors, WayneCarCorpsContext db)
+        private IEnumerable<WayneCarCorps.MongoDBModels.MongoColour> colors;
+        public ColorsImporter(IEnumerable<WayneCarCorps.MongoDBModels.MongoColour> colors, WayneCarCorpsContext db)
         {
             this.db = db;
             this.colors = colors;

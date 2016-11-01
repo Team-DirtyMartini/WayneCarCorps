@@ -15,7 +15,7 @@ namespace WayneCarCorps.Importer
     {
         private WayneCarCorpsContext db;
        // private Car car;
-        public CarsImporter(ICollection<WayneCarCorps.MongoDBModels.Car> cars, WayneCarCorpsContext db, Car car)
+        public CarsImporter(ICollection<WayneCarCorps.MongoDBModels.OldMongoCar> cars, WayneCarCorpsContext db, Car car)
         {
             this.db = db;
             
