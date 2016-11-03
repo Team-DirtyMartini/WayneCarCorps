@@ -28,7 +28,10 @@ namespace WayneCarCorps.Importer
         public void Import()
         {
             var countries = this.Deserialize<CountryXmlModel>("../../XmlFiles/CountriesXml.xml", "Countries");
-            this.ProcessCountries(countries);      
+            this.ProcessCountries(countries);
+
+            var cars = this.Deserialize<MongoCar>("../../XmlFiles/MongoCars.xml", "Cars");
+            this.ProcessCarsInMongo(cars);
         }
 
         private IEnumerable<TModel> Deserialize<TModel>(string fileName, string rootElement)
@@ -46,6 +49,12 @@ namespace WayneCarCorps.Importer
             }
 
             return result;
+        }
+
+        private void ProcessCarsInMongo(IEnumerable<MongoCar> cars)
+        {
+            var mongoLoader = new MongoDBLoader<MongoCar>();
+            mongoLoader.LoadEntities(cars, "Cars");
         }
 
         private void ProcessCountries(IEnumerable<CountryXmlModel> countries)

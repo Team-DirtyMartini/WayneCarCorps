@@ -16,7 +16,7 @@ namespace WayneCarCorps.Importer
     {
         private const int DefaultNumberOfSeats = 4;
 
-        private readonly WayneCarCorpsContext db;
+        private WayneCarCorpsContext db;
         public CarsImporter(WayneCarCorpsContext db)
         {
             this.db = db;
@@ -25,17 +25,25 @@ namespace WayneCarCorps.Importer
 
         public void import(IEnumerable<MongoCar> cars)
         {
-           // var counter = 0;
+            var counter = 0;
             this.db.Configuration.AutoDetectChangesEnabled = false;
             this.db.Configuration.ValidateOnSaveEnabled = false;
             foreach (var car in cars)
             {
-                db.Cars.Add(CreateCar(car));
+               this.db.Cars.Add(CreateCar(car));
+                counter++;
+                if (counter % 20 == 0)
+                {
+                    this.db.SaveChanges();
+                    this.db = new WayneCarCorpsContext();
+                    this.db.Configuration.AutoDetectChangesEnabled = true;
+                    this.db.Configuration.ValidateOnSaveEnabled = true;
+                }
             }
 
             this.db.Configuration.AutoDetectChangesEnabled = true;
             this.db.Configuration.ValidateOnSaveEnabled = true;
-            db.SaveChanges();
+            this.db.SaveChanges();
         }
 
         private Car CreateCar(MongoCar car)

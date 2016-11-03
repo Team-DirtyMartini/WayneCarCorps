@@ -18,6 +18,10 @@ namespace WayneCarCorps.MongoDBModels
             this.Price = price;
             this.Dealer = dealer;
         }
+        public MongoCar()
+        {
+
+        }
 
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }

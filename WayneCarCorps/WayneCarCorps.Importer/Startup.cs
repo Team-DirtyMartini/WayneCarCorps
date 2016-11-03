@@ -25,9 +25,9 @@ namespace WayneCarCorps.Importer
                 var carsImporter = new CarsImporter(db);
                 carsImporter.import(cars);
             }
-            
 
-           // XmlImporter.Create().Import();
+
+            XmlImporter.Create().Import();
         }
 
 
