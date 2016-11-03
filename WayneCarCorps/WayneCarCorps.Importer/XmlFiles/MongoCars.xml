@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Cars>
+  <MongoCar>
+    <Manufacturer>Sangyong</Manufacturer>
+    <Model>Tatryonkunka</Model>
+    <Type>SUV</Type>
+    <Year>1999</Year>
+    <Colour>Yellow</Colour>
+    <Power>136</Power>
+    <NumberOfSeats>5</NumberOfSeats>
+    <Price>5000</Price>
+    <Dealer>Sangyong CO</Dealer>
+  </MongoCar>
+  <MongoCar>
+    <Manufacturer>Tatra</Manufacturer>
+    <Model>Pochi</Model>
+    <Type>SUV</Type>
+    <Year>2014</Year>
+    <Colour>Yellow</Colour>
+    <Power>213</Power>
+    <NumberOfSeats>5</NumberOfSeats>
+    <Price>50000</Price>
+    <Dealer>Sangyong CO</Dealer>
+  </MongoCar>
+</Cars>

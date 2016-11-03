@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDBOperator;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Xml.Serialization;
 using WayneCarCorps.Data;
 using WayneCarCorps.Importer.Models;
 using WayneCarCorps.Models;
+using WayneCarCorps.MongoDBModels;
 
 namespace WayneCarCorps.Importer
 {
@@ -26,7 +28,7 @@ namespace WayneCarCorps.Importer
         public void Import()
         {
             var countries = this.Deserialize<CountryXmlModel>("../../XmlFiles/CountriesXml.xml", "Countries");
-            this.ProcessCountries(countries);
+            this.ProcessCountries(countries);      
         }
 
         private IEnumerable<TModel> Deserialize<TModel>(string fileName, string rootElement)
