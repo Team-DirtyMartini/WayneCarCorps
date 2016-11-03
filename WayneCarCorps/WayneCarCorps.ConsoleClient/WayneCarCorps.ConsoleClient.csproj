@@ -60,6 +60,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ExcelDataHandler\ExcelDataHandler.csproj">
+      <Project>{c9ec88e3-effb-4ae2-9934-41b7be53e6fd}</Project>
+      <Name>ExcelDataHandler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MongoDBOperator\MongoDBOperator.csproj">
       <Project>{2A698487-09B0-4E9E-BE70-F71E8D63DE65}</Project>
       <Name>MongoDBOperator</Name>

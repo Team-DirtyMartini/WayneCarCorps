@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using ExcelDataHandler;
 using WayneCarCorps.Data;
 using WayneCarCorps.Data.Migrations;
-using WayneCarCorps.Models;
 using WayneCarCorps.MongoDBModels;
 
 namespace WayneCarCorps.ConsoleClient
@@ -20,7 +20,8 @@ namespace WayneCarCorps.ConsoleClient
                 Console.WriteLine(ctx.Cars.Count());
             }
 
-            UpdateMongoDB();
+            ExcelReader.ExtractZipFiles();
+            //UpdateMongoDB();
         }
 
         private static void UpdateMongoDB()
