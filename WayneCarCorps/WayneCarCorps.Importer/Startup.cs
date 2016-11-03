@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using WayneCarCorps.Data;
 using WayneCarCorps.Data.Migrations;
 using WayneCarCorps.Models;
-
+using WayneCarCorps.MongoDBModels;
 
 namespace WayneCarCorps.Importer
 {
@@ -16,21 +16,18 @@ namespace WayneCarCorps.Importer
     {
         static void Main()
         {
-            /*var extractor = new Extractor<Car>();
-            var cars  = extractor.GetEntitiesCollection("Cars"); */
+        
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<WayneCarCorpsContext, Configuration>());
-            //var extractor = new Extractor<WayneCarCorps.MongoDBModels.Colour>();
-            //var colors = extractor.GetEntitiesCollection("Colours");
+            var extractor = new MongoDBExtractor<MongoCar>();
+            var cars = extractor.GetEntitiesCollection("Cars");
+            using (var db = new WayneCarCorpsContext())
+            {
+                var carsImporter = new CarsImporter(db);
+                carsImporter.import(cars);
+            }
+            
 
-            //using (var db = new WayneCarCorpsContext())
-            //{
-
-            //    var colorImporter = new ColorsImporter(colors,db);
-            //    colorImporter.Import();
-            //    Console.WriteLine(db.Colors.Count());
-            //}
-
-            XmlImporter.Create().Import();
+           // XmlImporter.Create().Import();
         }
 
 

@@ -14,7 +14,7 @@ namespace WayneCarCorps.Models
         public int Id { get; set; }
 
         public virtual int ModelId { get; set; }
-
+        
         public virtual Model Model { get; set; }
 
         public int Year { get; set; }

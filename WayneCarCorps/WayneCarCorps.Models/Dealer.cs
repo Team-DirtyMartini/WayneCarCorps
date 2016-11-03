@@ -17,13 +17,13 @@ namespace WayneCarCorps.Models
 
         public string Name { get; set; }
 
-        public virtual int AddressId { get; set; }
+        public virtual int? AddressId { get; set; }
 
         public virtual Address Address { get; set; }
 
-        public decimal Incomes { get; set; }
+        public decimal? Incomes { get; set; }
 
-        public decimal Expenses { get; set; }
+        public decimal? Expenses { get; set; }
 
         public virtual ICollection<Car> Cars
         {

@@ -16,9 +16,9 @@ namespace MongoDBOperator
             database = connector.GetDatabbase(client);
         }
 
-        public IEnumerable<T> GetEntitiesCollection(string collectionType)
+        public IEnumerable<T> GetEntitiesCollection(string collectionTypе)
         {
-            var entities = database.GetCollection<T>(collectionType);
+            var entities = database.GetCollection<T>(collectionTypе);
 
             var entitiesCollection = entities.Find(e => true).ToEnumerable();
 
