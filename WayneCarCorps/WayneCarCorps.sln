@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WayneCarCorps.Importer", "W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WayneCarCorps.PDFWriter", "PDFWriter\WayneCarCorps.PDFWriter.csproj", "{3FE3A684-425C-43DF-89ED-4600942CB7B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WayneCarCorps.XmlHandler", "WayneCarCorps.XmlHandler\WayneCarCorps.XmlHandler.csproj", "{249B3A6D-A9EC-4576-B08F-E455721585A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{3FE3A684-425C-43DF-89ED-4600942CB7B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FE3A684-425C-43DF-89ED-4600942CB7B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FE3A684-425C-43DF-89ED-4600942CB7B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{249B3A6D-A9EC-4576-B08F-E455721585A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{249B3A6D-A9EC-4576-B08F-E455721585A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{249B3A6D-A9EC-4576-B08F-E455721585A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{249B3A6D-A9EC-4576-B08F-E455721585A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

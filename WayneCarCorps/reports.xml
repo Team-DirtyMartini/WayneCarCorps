@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<sales>
+	<sale d2p1:dealership="" xmlns:d2p1="Auto Italia">
+		<summaryOfSales d3p1:date="" d3p2:income="" xmlns:d3p2="17800.00" xmlns:d3p1="1/10/2016 12:00:00 AM" />
+		<summaryOfSales d3p1:date="" d3p2:income="" xmlns:d3p2="17800.00" xmlns:d3p1="2/10/2016 12:00:00 AM" />
+		<summaryOfSales d3p1:date="" d3p2:income="" xmlns:d3p2="17800.00" xmlns:d3p1="3/10/2016 12:00:00 AM" />
+	</sale>
+	<sale d2p1:dealership="" xmlns:d2p1="Daru Car">
+		<summaryOfSales d3p1:date="" d3p2:income="" xmlns:d3p2="75300.00" xmlns:d3p1="1/10/2016 12:00:00 AM" />
+		<summaryOfSales d3p1:date="" d3p2:income="" xmlns:d3p2="336000.00" xmlns:d3p1="1/10/2016 12:00:00 AM" />
+		<summaryOfSales d3p1:date="" d3p2:income="" xmlns:d3p2="75300.00" xmlns:d3p1="2/10/2016 12:00:00 AM" />
+		<summaryOfSales d3p1:date="" d3p2:income="" xmlns:d3p2="336000.00" xmlns:d3p1="2/10/2016 12:00:00 AM" />
+		<summaryOfSales d3p1:date="" d3p2:income="" xmlns:d3p2="75300.00" xmlns:d3p1="3/10/2016 12:00:00 AM" />
+		<summaryOfSales d3p1:date="" d3p2:income="" xmlns:d3p2="336000.00" xmlns:d3p1="3/10/2016 12:00:00 AM" />
+	</sale>
+	<sale d2p1:dealership="" xmlns:d2p1="Euratek Auto">
+		<summaryOfSales d3p1:date="" d3p2:income="" xmlns:d3p2="49500.00" xmlns:d3p1="1/10/2016 12:00:00 AM" />
+		<summaryOfSales d3p1:date="" d3p2:income="" xmlns:d3p2="49500.00" xmlns:d3p1="2/10/2016 12:00:00 AM" />
+		<summaryOfSales d3p1:date="" d3p2:income="" xmlns:d3p2="49500.00" xmlns:d3p1="3/10/2016 12:00:00 AM" />
+	</sale>
+	<sale d2p1:dealership="" xmlns:d2p1="Porsche Sofia East">
+		<summaryOfSales d3p1:date="" d3p2:income="" xmlns:d3p2="52500.00" xmlns:d3p1="1/10/2016 12:00:00 AM" />
+		<summaryOfSales d3p1:date="" d3p2:income="" xmlns:d3p2="52500.00" xmlns:d3p1="2/10/2016 12:00:00 AM" />
+		<summaryOfSales d3p1:date="" d3p2:income="" xmlns:d3p2="52500.00" xmlns:d3p1="3/10/2016 12:00:00 AM" />
+	</sale>
+	<sale d2p1:dealership="" xmlns:d2p1="Sangyong CO">
+		<summaryOfSales d3p1:date="" d3p2:income="" xmlns:d3p2="10000.00" xmlns:d3p1="1/10/2016 12:00:00 AM" />
+		<summaryOfSales d3p1:date="" d3p2:income="" xmlns:d3p2="300000.00" xmlns:d3p1="1/10/2016 12:00:00 AM" />
+		<summaryOfSales d3p1:date="" d3p2:income="" xmlns:d3p2="10000.00" xmlns:d3p1="2/10/2016 12:00:00 AM" />
+		<summaryOfSales d3p1:date="" d3p2:income="" xmlns:d3p2="300000.00" xmlns:d3p1="2/10/2016 12:00:00 AM" />
+		<summaryOfSales d3p1:date="" d3p2:income="" xmlns:d3p2="10000.00" xmlns:d3p1="3/10/2016 12:00:00 AM" />
+		<summaryOfSales d3p1:date="" d3p2:income="" xmlns:d3p2="300000.00" xmlns:d3p1="3/10/2016 12:00:00 AM" />
+	</sale>
+</sales>

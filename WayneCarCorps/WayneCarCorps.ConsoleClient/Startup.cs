@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using ExcelDataHandler;
+using PDFWriter;
 using WayneCarCorps.Data;
 using WayneCarCorps.Data.Migrations;
 using WayneCarCorps.MongoDBModels;
+using WayneCarCorps.XmlHandler;
 
 namespace WayneCarCorps.ConsoleClient
 {
@@ -21,7 +23,8 @@ namespace WayneCarCorps.ConsoleClient
             }
 
             ExcelReader.ExtractZipFiles();
-            PDFWriter.PdfExporter.CreatePdfTable();
+            PdfExporter.CreatePdfTable();
+            XmlReportExporter.GetSalesForEachDealership();
             //UpdateMongoDB();
         }
 

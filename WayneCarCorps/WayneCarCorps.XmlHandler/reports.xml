@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<sales>
+	<sale dealership="Auto Italia">
+		<summaryOfSales date="10-1-2016" income="17800.00" soldCars="1" />
+		<summaryOfSales date="10-2-2016" income="17800.00" soldCars="1" />
+		<summaryOfSales date="10-3-2016" income="17800.00" soldCars="1" />
+	</sale>
+	<sale dealership="Daru Car">
+		<summaryOfSales date="10-1-2016" income="411300.00" soldCars="7" />
+		<summaryOfSales date="10-2-2016" income="411300.00" soldCars="7" />
+		<summaryOfSales date="10-3-2016" income="411300.00" soldCars="7" />
+	</sale>
+	<sale dealership="Euratek Auto">
+		<summaryOfSales date="10-1-2016" income="49500.00" soldCars="3" />
+		<summaryOfSales date="10-2-2016" income="49500.00" soldCars="3" />
+		<summaryOfSales date="10-3-2016" income="49500.00" soldCars="3" />
+	</sale>
+	<sale dealership="Porsche Sofia East">
+		<summaryOfSales date="10-1-2016" income="52500.00" soldCars="3" />
+		<summaryOfSales date="10-2-2016" income="52500.00" soldCars="3" />
+		<summaryOfSales date="10-3-2016" income="52500.00" soldCars="3" />
+	</sale>
+	<sale dealership="Sangyong CO">
+		<summaryOfSales date="10-1-2016" income="310000.00" soldCars="8" />
+		<summaryOfSales date="10-2-2016" income="310000.00" soldCars="8" />
+		<summaryOfSales date="10-3-2016" income="310000.00" soldCars="8" />
+	</sale>
+</sales>
