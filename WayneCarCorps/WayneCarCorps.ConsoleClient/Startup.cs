@@ -21,6 +21,7 @@ namespace WayneCarCorps.ConsoleClient
             }
 
             ExcelReader.ExtractZipFiles();
+            PDFWriter.PdfExporter.CreatePdfTable();
             //UpdateMongoDB();
         }
 
