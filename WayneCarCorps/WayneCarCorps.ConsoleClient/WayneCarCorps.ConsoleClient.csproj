@@ -84,6 +84,10 @@
       <Project>{7EB8040C-6A07-4894-B2CB-8FE1544CEBC5}</Project>
       <Name>WayneCarCorps.MongoDBModels</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WayneCarCorps.XmlHandler\WayneCarCorps.XmlHandler.csproj">
+      <Project>{249b3a6d-a9ec-4576-b08f-e455721585a1}</Project>
+      <Name>WayneCarCorps.XmlHandler</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
