@@ -1,0 +1,9 @@
+{
+  "CarModelId": 4,
+  "CarModel": "X5",
+  "Manufacturer": "BMW",
+  "Seats": 5,
+  "Dealer": "Daru Car",
+  "TotalSum": 225900.00,
+  "SoldCars": 3
+}

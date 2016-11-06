@@ -1,0 +1,9 @@
+{
+  "CarModelId": 3,
+  "CarModel": "Octavia",
+  "Manufacturer": "Skoda",
+  "Seats": 5,
+  "Dealer": "Euratek Auto",
+  "TotalSum": 49500.00,
+  "SoldCars": 9
+}

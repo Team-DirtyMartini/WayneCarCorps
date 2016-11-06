@@ -1,0 +1,9 @@
+{
+  "CarModelId": 1,
+  "CarModel": "Golf",
+  "Manufacturer": "VW",
+  "Seats": 5,
+  "Dealer": "Porsche Sofia East",
+  "TotalSum": 52500.00,
+  "SoldCars": 9
+}

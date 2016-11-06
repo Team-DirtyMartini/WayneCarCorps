@@ -1,0 +1,9 @@
+{
+  "CarModelId": 2,
+  "CarModel": "Delta",
+  "Manufacturer": "Lancia",
+  "Seats": 5,
+  "Dealer": "Auto Italia",
+  "TotalSum": 53400.00,
+  "SoldCars": 3
+}

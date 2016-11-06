@@ -7,6 +7,7 @@ using ExcelDataHandler;
 using PDFWriter;
 using WayneCarCorps.Data;
 using WayneCarCorps.Data.Migrations;
+using WayneCarCorps.JsonHandler;
 using WayneCarCorps.MongoDBModels;
 using WayneCarCorps.XmlHandler;
 
@@ -25,6 +26,7 @@ namespace WayneCarCorps.ConsoleClient
             ExcelReader.ExtractZipFiles();
             PdfExporter.CreatePdfTable();
             XmlReportExporter.GetSalesForEachDealership();
+            JsonWriter.WriteToJson();
             //UpdateMongoDB();
         }
 
