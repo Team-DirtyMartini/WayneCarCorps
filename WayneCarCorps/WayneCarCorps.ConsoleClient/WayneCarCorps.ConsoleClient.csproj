@@ -76,6 +76,10 @@
       <Project>{85d53e79-e68b-4c3b-9ac7-d1708ddf071e}</Project>
       <Name>WayneCarCorps.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WayneCarCorps.JsonHandler\WayneCarCorps.JsonHandler.csproj">
+      <Project>{93a76550-3eb8-4168-8beb-0e9cacd9f9bd}</Project>
+      <Name>WayneCarCorps.JsonHandler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WayneCarCorps.Models\WayneCarCorps.Models.csproj">
       <Project>{3e883c2f-c80a-4647-b099-e29d79dab768}</Project>
       <Name>WayneCarCorps.Models</Name>
