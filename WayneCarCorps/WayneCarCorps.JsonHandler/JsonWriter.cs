@@ -38,7 +38,7 @@ namespace WayneCarCorps.JsonHandler
             {
                 var serializedObject = JsonConvert.SerializeObject(car, Formatting.Indented);
 
-                using (var writer = new StreamWriter(string.Format("../../JsonReports/{0}.json", car.CarModelId)))
+                using (var writer = new StreamWriter(string.Format("../../../JsonReports/{0}.json", car.CarModelId)))
                 {
                     writer.WriteLine(serializedObject);
                 }

@@ -1,0 +1,9 @@
+{
+  "CarModelId": 5,
+  "CarModel": "M3",
+  "Manufacturer": "BMW",
+  "Seats": 2,
+  "Dealer": "Daru Car",
+  "TotalSum": 168000.00,
+  "SoldCars": 18
+}

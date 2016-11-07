@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WayneCarCorps.XmlHandler", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WayneCarCorps.JsonHandler", "WayneCarCorps.JsonHandler\WayneCarCorps.JsonHandler.csproj", "{93A76550-3EB8-4168-8BEB-0E9CACD9F9BD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WayneCarCorps.MySQL", "WayneCarCorps.MySQL\WayneCarCorps.MySQL.csproj", "{9655729F-D353-4B0E-9852-BE667BB4EE9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WayneCarCorps.MySQL.Importer", "WayneCarCorps.MySQL.ConsoleClient\WayneCarCorps.MySQL.Importer.csproj", "{BB4B5458-B1A9-40EE-A3FC-42D0F928B85A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{93A76550-3EB8-4168-8BEB-0E9CACD9F9BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93A76550-3EB8-4168-8BEB-0E9CACD9F9BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93A76550-3EB8-4168-8BEB-0E9CACD9F9BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9655729F-D353-4B0E-9852-BE667BB4EE9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9655729F-D353-4B0E-9852-BE667BB4EE9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9655729F-D353-4B0E-9852-BE667BB4EE9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9655729F-D353-4B0E-9852-BE667BB4EE9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB4B5458-B1A9-40EE-A3FC-42D0F928B85A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB4B5458-B1A9-40EE-A3FC-42D0F928B85A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB4B5458-B1A9-40EE-A3FC-42D0F928B85A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB4B5458-B1A9-40EE-A3FC-42D0F928B85A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
