@@ -12,7 +12,9 @@ using WayneCarCorps.MongoDBModels;
 using WayneCarCorps.XmlHandler;
 using Ninject;
 using System.Reflection;
+using WayneCarCorps.Data.Common;
 using WayneCarCorps.Importer;
+using WayneCarCorps.Models;
 
 
 namespace WayneCarCorps.ConsoleClient
@@ -31,8 +33,10 @@ namespace WayneCarCorps.ConsoleClient
             var xmlImporter = kernel.Get<XmlImporter>();
             xmlImporter.Import();
 
+            var salesRepo = new EfRepository<Sale>(db);
+
             //ExcelReader.ExtractZipFiles();
-            //PdfExporter.CreatePdfTable();
+            PdfExporter.CreatePdfTable(salesRepo);
             //XmlReportExporter.GetSalesForEachDealership();
             // JsonWriter.WriteToJson();
             //UpdateMongoDB();

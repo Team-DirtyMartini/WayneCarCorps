@@ -4,16 +4,23 @@ using System.Linq;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using WayneCarCorps.Data;
+using WayneCarCorps.Data.Common;
+using WayneCarCorps.Models;
 
 namespace PDFWriter
 {
     public class PdfExporter
     {
-        public static void CreatePdfTable()
-        {
-            var dbContext = new WayneCarCorpsContext();
+        private const string FilePaths = "../../../PdfReports/Sales-report-{0}.pdf";
+        private const string Dealer = "Dealer";
+        private const string Model = "Model";
+        private const string SoldCars = "Sold cars";
+        private const string IncomeFromCars = "Income from cars";
+        private const string PdfFont = "Segoe UI";
 
-            var sales = dbContext.Sales.Include("Dealer").Select(x => new
+        public static void CreatePdfTable(IRepository<Sale> salesRepository)
+        {
+            var sales = salesRepository.All().Select(x => new
             {
                 DealerName = x.Dealer.Name,
                 Car = x.Car.Model.Name,
@@ -22,12 +29,12 @@ namespace PDFWriter
                 Date = x.Date
             });
 
-            var dates = dbContext.Sales.GroupBy(p => p.Date).ToList();
+            var dates = salesRepository.All().GroupBy(sale => sale.Date);
 
             foreach (var date in dates)
             {
                 var currentDate = $"{date.Key.Day}-{date.Key.Month}-{date.Key.Year}";
-                string filePath = $"../../PdfReports/Sales-report-{currentDate}.pdf";
+                string filePath = string.Format(FilePaths, currentDate);
                 Document document = new Document();
                 PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(filePath, FileMode.Create));
 
@@ -36,16 +43,16 @@ namespace PDFWriter
                     document.Open();
 
                     PdfPTable table = new PdfPTable(4);
-                    PdfPCell dealerCell = new PdfPCell(new Phrase("Dealer"));
+                    PdfPCell dealerCell = new PdfPCell(new Phrase(Dealer));
                     dealerCell.BackgroundColor = BaseColor.GRAY;
 
-                    PdfPCell modelCell = new PdfPCell(new Phrase("Model"));
+                    PdfPCell modelCell = new PdfPCell(new Phrase(Model));
                     modelCell.BackgroundColor = BaseColor.GRAY;
 
-                    PdfPCell soldCarsCell = new PdfPCell(new Phrase("Sold cars"));
+                    PdfPCell soldCarsCell = new PdfPCell(new Phrase(SoldCars));
                     soldCarsCell.BackgroundColor = BaseColor.GRAY;
 
-                    PdfPCell incomeFromCarCell = new PdfPCell(new Phrase("Income from cars"));
+                    PdfPCell incomeFromCarCell = new PdfPCell(new Phrase(IncomeFromCars));
                     incomeFromCarCell.BackgroundColor = BaseColor.GRAY;
 
                     table.AddCell(dealerCell);
@@ -73,7 +80,7 @@ namespace PDFWriter
                         }
                     }
 
-                    Font font = FontFactory.GetFont("Segoe UI", 12.0f, Font.BOLD);
+                    Font font = FontFactory.GetFont(PdfFont, 12.0f, Font.BOLD);
                     PdfPCell totalSumCell =
                         new PdfPCell(
                             new Phrase(
