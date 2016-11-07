@@ -1,18 +1,14 @@
+using System.Data.Entity.Migrations;
+
 namespace WayneCarCorps.Data.Migrations
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-
-    public sealed class Configuration : DbMigrationsConfiguration<WayneCarCorps.Data.WayneCarCorpsContext>
+    public sealed class Configuration : DbMigrationsConfiguration<WayneCarCorpsContext>
     {
         public Configuration()
         {
             this.AutomaticMigrationsEnabled = true;
             this.AutomaticMigrationDataLossAllowed = true;
             this.ContextKey = "WaynCarCorps.Data.WayneCarCorpsContext";
-
         }
 
         protected override void Seed(WayneCarCorps.Data.WayneCarCorpsContext context)

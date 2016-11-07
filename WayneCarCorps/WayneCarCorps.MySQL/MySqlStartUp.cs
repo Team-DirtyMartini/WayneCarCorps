@@ -1,5 +1,4 @@
 ﻿using Telerik.OpenAccess;
-using WayneCarCorps.Data.Common;
 using WayneCarCorps.MySQL.FluentModels;
 using WayneCarCorps.MySQL.Models;
 
@@ -10,7 +9,6 @@ namespace WayneCarCorps.MySQL
         public static void Main()
         {
             var context = new FluentModelContext();
-            var repository = new OpenAccessRepository<SalesReport>(context);
             UpdateDatabase(context);
         }
 

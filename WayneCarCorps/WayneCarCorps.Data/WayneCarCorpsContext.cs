@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 using WayneCarCorps.Models;
 
 namespace WayneCarCorps.Data
@@ -13,7 +8,6 @@ namespace WayneCarCorps.Data
         public WayneCarCorpsContext()
            : base("WayneCarCorpsDataBase")
         {
-
         }
 
         public virtual IDbSet<Address> Addresses { get; set; }

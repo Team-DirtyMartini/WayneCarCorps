@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WayneCarCorps.Models;
-
-namespace WayneCarCorps.MySQL.Models
+﻿namespace WayneCarCorps.MySQL.Models
 {
     public class SalesReport
     {

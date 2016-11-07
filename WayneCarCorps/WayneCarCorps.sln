@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelDataHandler", "ExcelDataHandler\ExcelDataHandler.csproj", "{C9EC88E3-EFFB-4AE2-9934-41B7BE53E6FD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WayneCarCorps.ExcelDataHandler", "ExcelDataHandler\WayneCarCorps.ExcelDataHandler.csproj", "{C9EC88E3-EFFB-4AE2-9934-41B7BE53E6FD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WayneCarCorps.MongoDBModels", "WayneCarCorps.MongoDBModels\WayneCarCorps.MongoDBModels.csproj", "{7EB8040C-6A07-4894-B2CB-8FE1544CEBC5}"
 EndProject

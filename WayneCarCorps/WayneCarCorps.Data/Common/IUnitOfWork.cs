@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WayneCarCorps.Data.Common
+﻿namespace WayneCarCorps.Data.Common
 {
     public interface IUnitOfWork
     {

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WayneCarCorps.Models;
+﻿using WayneCarCorps.Models;
 
 namespace WayneCarCorps.Data.Common
 {
@@ -22,5 +17,7 @@ namespace WayneCarCorps.Data.Common
         CarType CreateCarType();
 
         Country CreateCountry();
+
+        Sale CreateSale();
     }
 }

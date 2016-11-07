@@ -10,7 +10,6 @@ namespace WayneCarCorps.MySQL
         public OpenAccessRepository(FluentModelContext context)
         {
             this.Context = context;
-
         }
 
         public FluentModelContext Context { get; set; }

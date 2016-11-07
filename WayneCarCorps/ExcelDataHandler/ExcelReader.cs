@@ -2,41 +2,52 @@
 using System.Data.OleDb;
 using System.Linq;
 using Ionic.Zip;
-using WayneCarCorps.Data;
+using WayneCarCorps.Data.Common;
 using WayneCarCorps.Models;
 
 namespace ExcelDataHandler
 {
     public class ExcelReader
     {
-        public static void ExtractZipFiles()
-        {
-            string zipToUnpack = "../../../Sales-Reports.zip";
-            string unpackDirectory = "../../../Reports";
+        private const string ZipFileToUnpackLocation = "../../../Sales-Reports.zip";
+        private const string PathToUnpackZip = "../../../Reports";
 
-            using (ZipFile zipFile = ZipFile.Read(zipToUnpack))
+        private IRepository<Sale> repositorySales;
+        private IRepository<Dealer> repositoryDealers;
+        private IUnitOfWork unitOfWork;
+        private IModelsFactory modelsFactory;
+
+        public ExcelReader(IRepository<Sale> repositorySales, IRepository<Dealer> repositoryDealers, IUnitOfWork unitOfWork, IModelsFactory modelsFactory)
+        {
+            this.repositorySales = repositorySales;
+            this.repositoryDealers = repositoryDealers;
+            this.unitOfWork = unitOfWork;
+            this.modelsFactory = modelsFactory;
+        }
+
+        public void ExtractZipFiles()
+        {
+            using (ZipFile zipFile = ZipFile.Read(ZipFileToUnpackLocation))
             {
                 foreach (ZipEntry zipEntry in zipFile)
                 {
-                    //    Console.WriteLine(zipEntry);
-                    zipEntry.Extract(unpackDirectory, ExtractExistingFileAction.OverwriteSilently);
+                    zipEntry.Extract(PathToUnpackZip, ExtractExistingFileAction.OverwriteSilently);
                     string currentZip = zipEntry.FileName;
-                    //   Console.WriteLine(currentZip);
+
                     if (currentZip.IndexOf("xls") >= 0)
                     {
-                        GetExcelInformation(currentZip);
+                        this.GetExcelInformation(currentZip);
                     }
                 }
             }
         }
 
-        public static void GetExcelInformation(string fileName)
+        private void GetExcelInformation(string fileName)
         {
             string connectionString = @"Provider= Microsoft.ACE.OLEDB.12.0;Data Source = ..\..\..\Reports\" + fileName + @";Extended Properties = ""Excel 12.0 Xml;HDR=YES""";
             OleDbConnection dbConnection = new OleDbConnection(connectionString);
 
             dbConnection.Open();
-            var dbContext = new WayneCarCorpsContext();
 
             int indexOfReportInFileName = fileName.LastIndexOf("-Report");
             int indexOfDealership = fileName.IndexOf("Dealership") + "dealership-".Length;
@@ -47,6 +58,7 @@ namespace ExcelDataHandler
                 string xslStringCommand = @"SELECT * FROM [Sales$]";
                 OleDbCommand xslCommand = new OleDbCommand(xslStringCommand, dbConnection);
                 OleDbDataReader reader = xslCommand.ExecuteReader();
+                int count = 0;
 
                 using (reader)
                 {
@@ -63,25 +75,29 @@ namespace ExcelDataHandler
                         double pricePerCar = (double)reader["PricePerCar"];
                         double income = (double)reader["Income"];
                         string dateOfReport = fileName.Substring(fileName.Length - 14, 10);
-                        int dealerShipId = dbContext.Dealers.Where(x => x.Name == dealershipName).Select(x => x.Id).FirstOrDefault();
+                        int dealerShipId = this.repositoryDealers.All().Where(x => x.Name == dealershipName).Select(x => x.Id).FirstOrDefault();
 
                         DateTime date = DateTime.Parse(dateOfReport);
 
-                        var sale = new Sale()
-                        {
-                            CarId = (int)modelId,
-                            SoldCars = (int)soldCars,
-                            PricePerCar = (int)pricePerCar,
-                            IncomeFromCar = (int)income,
-                            Date = date,
-                            DealerId = dealerShipId
-                        };
+                        var sale = modelsFactory.CreateSale();
 
-                        dbContext.Sales.Add(sale);
+                        sale.CarId = (int)modelId;
+                        sale.SoldCars = (int)soldCars;
+                        sale.PricePerCar = (int)pricePerCar;
+                        sale.IncomeFromCar = (int)income;
+                        sale.Date = date;
+                        sale.DealerId = dealerShipId;
+
+                        if (count % 100 == 0)
+                        {
+                            unitOfWork.Commit();
+                        }
+
+                        this.repositorySales.Add(sale);
                     }
                 }
 
-                dbContext.SaveChanges();
+                unitOfWork.Commit();
             }
         }
     }

@@ -1,9 +1,7 @@
-﻿using System.Data.Entity;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-using WayneCarCorps.Data;
 using WayneCarCorps.Data.Common;
 using WayneCarCorps.Models;
 
@@ -18,9 +16,16 @@ namespace PDFWriter
         private const string IncomeFromCars = "Income from cars";
         private const string PdfFont = "Segoe UI";
 
-        public static void CreatePdfTable(IRepository<Sale> salesRepository)
+        public PdfExporter(IRepository<Sale> salesRepository)
         {
-            var sales = salesRepository.All().Select(x => new
+            this.SalesRepository = salesRepository;
+        }
+
+        public IRepository<Sale> SalesRepository { get; set; }
+
+        public void CreatePdfTable()
+        {
+            var sales = this.SalesRepository.All().Select(x => new
             {
                 DealerName = x.Dealer.Name,
                 Car = x.Car.Model.Name,
@@ -29,7 +34,7 @@ namespace PDFWriter
                 Date = x.Date
             });
 
-            var dates = salesRepository.All().GroupBy(sale => sale.Date);
+            var dates = this.SalesRepository.All().GroupBy(sale => sale.Date);
 
             foreach (var date in dates)
             {

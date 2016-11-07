@@ -1,8 +1,6 @@
 ﻿using MongoDBOperator;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
 using ExcelDataHandler;
 using PDFWriter;
 using WayneCarCorps.Data;
@@ -12,10 +10,7 @@ using WayneCarCorps.MongoDBModels;
 using WayneCarCorps.XmlHandler;
 using Ninject;
 using System.Reflection;
-using WayneCarCorps.Data.Common;
 using WayneCarCorps.Importer;
-using WayneCarCorps.Models;
-
 
 namespace WayneCarCorps.ConsoleClient
 {
@@ -28,17 +23,24 @@ namespace WayneCarCorps.ConsoleClient
             db.Database.CreateIfNotExists();
             var cars = new MongoDBExtractor<MongoCar>().GetEntitiesCollection("Cars");
             var kernel = BootstrapNinject();
+
             var carsImporter = kernel.Get<CarsImporter>();
             carsImporter.import(cars);
+
             var xmlImporter = kernel.Get<XmlImporter>();
             xmlImporter.Import();
 
-            var salesRepo = new EfRepository<Sale>(db);
+            var zipExtractor = kernel.Get<ExcelReader>();
+            zipExtractor.ExtractZipFiles();
 
-            //ExcelReader.ExtractZipFiles();
-            PdfExporter.CreatePdfTable(salesRepo);
-            //XmlReportExporter.GetSalesForEachDealership();
-            // JsonWriter.WriteToJson();
+            var pdfExporter = kernel.Get<PdfExporter>();
+            pdfExporter.CreatePdfTable();
+
+            var jsonExporter = kernel.Get<JsonWriter>();
+            jsonExporter.WriteToJson();
+
+            var xmlExporter = kernel.Get<XmlReportExporter>();
+            xmlExporter.GetSalesForEachDealership();
             //UpdateMongoDB();
         }
 

@@ -1,19 +1,24 @@
 ﻿using System.Linq;
 using System.Text;
 using System.Xml;
-using WayneCarCorps.Data;
+using WayneCarCorps.Data.Common;
+using WayneCarCorps.Models;
 
 namespace WayneCarCorps.XmlHandler
 {
     public class XmlReportExporter
     {
         private const string FilePath = "../../reports.xml";
-        
-        public static void GetSalesForEachDealership()
-        {
-            var dbContext = new WayneCarCorpsContext();
+        private IRepository<Sale> repositorySales;
 
-            var dealerships = dbContext.Sales.GroupBy(x => new { x.Dealer.Name, x.Date }).ToList();
+        public XmlReportExporter(IRepository<Sale> repositorySales)
+        {
+            this.repositorySales = repositorySales;
+        }
+
+        public void GetSalesForEachDealership()
+        {
+            var dealerships = this.repositorySales.All().GroupBy(x => new { x.Dealer.Name, x.Date }).ToList();
             int countOfDates = dealerships.Select(x => x.Key.Date).Distinct().Count();
 
             Encoding encoding = Encoding.GetEncoding("windows-1251");
