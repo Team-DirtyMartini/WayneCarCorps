@@ -10,10 +10,10 @@ namespace WayneCarCorps.Models
 {
     public class Model
     {
-        private ICollection<Car> cars;
+        private IList<Car> cars;
         public Model()
         {
-            this.Cars = new HashSet<Car>();
+            this.Cars = new List<Car>();
         }
 
         public int Id { get; set; }
@@ -32,7 +32,7 @@ namespace WayneCarCorps.Models
         [Column("Number of seats")]
         public int NumberOfSeats { get; set; }
 
-        public virtual ICollection<Car> Cars
+        public virtual IList<Car> Cars
         {
             get
             {

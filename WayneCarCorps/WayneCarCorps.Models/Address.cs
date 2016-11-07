@@ -9,12 +9,12 @@ namespace WayneCarCorps.Models
 {
     public class Address 
     {
-        private ICollection<Dealer> dealers;
-        private ICollection<Manufacturer> manufacturers;
+        private IList<Dealer> dealers;
+        private IList<Manufacturer> manufacturers;
         public Address()
         {
-            this.Dealers = new HashSet<Dealer>();
-            this.Manufacturers = new HashSet<Manufacturer>();
+            this.Dealers = new List<Dealer>();
+            this.Manufacturers = new List<Manufacturer>();
         }
         public int Id { get; set; }
 
@@ -24,13 +24,13 @@ namespace WayneCarCorps.Models
 
         public virtual Country Country { get; set; }
 
-        public virtual ICollection<Dealer> Dealers
+        public virtual IList<Dealer> Dealers
         {
             get { return this.dealers; }
             set { this.dealers = value; }
         }
 
-        public virtual ICollection<Manufacturer> Manufacturers
+        public virtual IList<Manufacturer> Manufacturers
         {
             get { return this.manufacturers; }
             set { this.manufacturers = value; }

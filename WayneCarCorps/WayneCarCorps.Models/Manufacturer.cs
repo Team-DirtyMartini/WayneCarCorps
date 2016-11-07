@@ -8,10 +8,10 @@ namespace WayneCarCorps.Models
 {
     public class Manufacturer
     {
-        private ICollection<Model> models;
+        private IList<Model> models;
         public Manufacturer()
         {
-            this.Models = new HashSet<Model>();
+            this.Models = new List<Model>();
         }
         public int Id { get; set; }
 
@@ -21,7 +21,7 @@ namespace WayneCarCorps.Models
 
         public virtual Address Address { get; set; }
 
-        public virtual ICollection<Model> Models
+        public virtual IList<Model> Models
         {
             get { return this.models; }
             set { this.models = value; }

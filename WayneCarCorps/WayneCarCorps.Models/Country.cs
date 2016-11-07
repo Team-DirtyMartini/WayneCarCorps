@@ -8,16 +8,16 @@ namespace WayneCarCorps.Models
 {
     public class Country
     {
-        private ICollection<Address> addresses;
+        private IList<Address> addresses;
         public Country()
         {
-            this.Addresses = new HashSet<Address>();
+            this.Addresses = new List<Address>();
         }
         public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public virtual ICollection<Address> Addresses
+        public virtual IList<Address> Addresses
         {
             get { return this.addresses; }
             set { this.addresses = value; }

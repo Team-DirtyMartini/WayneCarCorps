@@ -8,16 +8,16 @@ namespace WayneCarCorps.Models
 {
     public class CarType
     {
-        private ICollection<Model> models;
+        private IList<Model> models;
         public CarType()
         {
-            this.Models = new HashSet<Model>();
+            this.Models = new List<Model>();
         }
         public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public virtual ICollection<Model> Models
+        public virtual IList<Model> Models
         {
             get { return this.models; }
             set { this.models = value; }
