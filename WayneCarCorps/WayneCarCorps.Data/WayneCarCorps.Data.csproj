@@ -49,6 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\EfRepository.cs" />
+    <Compile Include="Common\EfUnitOfWork.cs" />
+    <Compile Include="Common\IModelsFactory.cs" />
+    <Compile Include="Common\IRepository.cs" />
+    <Compile Include="Common\IUnitOfWork.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WayneCarCorpsContext.cs" />

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using WayneCarCorps.Data;
+using WayneCarCorps.Data.Common;
 using WayneCarCorps.Importer.Models;
 using WayneCarCorps.Models;
 using WayneCarCorps.MongoDBModels;
@@ -14,15 +15,18 @@ using WayneCarCorps.MongoDBModels;
 namespace WayneCarCorps.Importer
 {
     public class XmlImporter
-    {       
-        private XmlImporter()
-        {
-            
-        }
+    {
+        private IModelsFactory modelsFactory;
+        private IUnitOfWork unitOfWork;
+        private IRepository<Country> countries;
 
-        public static XmlImporter Create()
+        public XmlImporter(IModelsFactory modelsFactory,
+            IUnitOfWork unitOfWork,
+           IRepository<Country> countries)
         {
-            return new XmlImporter();
+            this.modelsFactory = modelsFactory;
+            this.unitOfWork = unitOfWork;
+            this.countries = countries;
         }
 
         public void Import()
@@ -59,33 +63,26 @@ namespace WayneCarCorps.Importer
 
         private void ProcessCountries(IEnumerable<CountryXmlModel> countries)
         {
-            var addedCountries = 0;
-            var db = new WayneCarCorpsContext();
-            db.Configuration.AutoDetectChangesEnabled = false;
-            db.Configuration.ValidateOnSaveEnabled = false;
 
             foreach (var country in countries)
             {
-                var newCountry = new Country
-                {
-                    Name = country.Name
-                };
+                var newCountry = this.modelsFactory.CreateCountry();
+                newCountry.Name = country.Name;                
 
-                db.Countries.Add(newCountry);
-                addedCountries++;
+                this.countries.Add(newCountry);
 
-                if (addedCountries % 100 == 0)
-                {
-                    db.SaveChanges();
-                    db = new WayneCarCorpsContext();
-                    db.Configuration.AutoDetectChangesEnabled = false;
-                    db.Configuration.ValidateOnSaveEnabled = false;
-                }
+                //if (addedCountries % 100 == 0)
+                //{
+                //    db.SaveChanges();
+                //    db = new WayneCarCorpsContext();
+                //    db.Configuration.AutoDetectChangesEnabled = false;
+                //    db.Configuration.ValidateOnSaveEnabled = false;
+                //}
             }
 
-            db.SaveChanges();
-            db.Configuration.AutoDetectChangesEnabled = true;
-            db.Configuration.ValidateOnSaveEnabled = true;
+            unitOfWork.Commit();
+            //db.Configuration.AutoDetectChangesEnabled = true;
+            //db.Configuration.ValidateOnSaveEnabled = true;
         }
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace WayneCarCorps.Models
 {
     [Serializable]
-    public class Car 
+    public class Car
     {
         public int Id { get; set; }
 

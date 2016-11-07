@@ -7,97 +7,112 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using WayneCarCorps.Data;
+using WayneCarCorps.Data.Common;
 using WayneCarCorps.Models;
 using WayneCarCorps.MongoDBModels;
 
 namespace WayneCarCorps.Importer
 {
-   public class CarsImporter
+    public class CarsImporter
     {
         private const int DefaultNumberOfSeats = 4;
 
-        private WayneCarCorpsContext db;
-        public CarsImporter(WayneCarCorpsContext db)
+        private IModelsFactory modelsFactory;
+        private IUnitOfWork unitOfWork;
+        private IRepository<Car> cars;
+        private IRepository<Dealer> dealers;
+        private IRepository<Model> models;
+        private IRepository<Manufacturer> manufacturers;
+        private IRepository<Color> colors;
+        private IRepository<CarType> carTypes;
+
+        public CarsImporter(IModelsFactory modelsFactory,
+            IUnitOfWork unitOfWork,
+            IRepository<Car> cars,
+            IRepository<Dealer> dealers,
+            IRepository<Model> models,
+            IRepository<Manufacturer> manufacturers,
+            IRepository<Color> colors,
+            IRepository<CarType> carTypes)
         {
-            this.db = db;
-            
+            this.modelsFactory = modelsFactory;
+            this.unitOfWork = unitOfWork;
+            this.cars = cars;
+            this.carTypes = carTypes;
+            this.colors = colors;
+            this.dealers = dealers;
+            this.manufacturers = manufacturers;
+            this.models = models;
         }
 
         public void import(IEnumerable<MongoCar> cars)
         {
-            var counter = 0;
-            this.db.Configuration.AutoDetectChangesEnabled = false;
-            this.db.Configuration.ValidateOnSaveEnabled = false;
+            //var counter = 0;
+            //this.db.Configuration.AutoDetectChangesEnabled = false;
+            //this.db.Configuration.ValidateOnSaveEnabled = false;
             foreach (var car in cars)
             {
-               this.db.Cars.Add(CreateCar(car));
-                counter++;
-                if (counter % 20 == 0)
-                {
-                    this.db.SaveChanges();
-                    this.db = new WayneCarCorpsContext();
-                    this.db.Configuration.AutoDetectChangesEnabled = true;
-                    this.db.Configuration.ValidateOnSaveEnabled = true;
-                }
+                this.cars.Add(CreateCar(car));
+                //counter++;
+                //if (counter % 20 == 0)
+                //{
+                //    this.db.SaveChanges();
+                //    this.db = new WayneCarCorpsContext();
+                //    this.db.Configuration.AutoDetectChangesEnabled = false;
+                //    this.db.Configuration.ValidateOnSaveEnabled = false;
+                //}
             }
 
-            this.db.Configuration.AutoDetectChangesEnabled = true;
-            this.db.Configuration.ValidateOnSaveEnabled = true;
-            this.db.SaveChanges();
+            //this.db.Configuration.AutoDetectChangesEnabled = true;
+            //this.db.Configuration.ValidateOnSaveEnabled = true;
+            this.unitOfWork.Commit();
         }
 
         private Car CreateCar(MongoCar car)
         {
-            var newCar = new Car
-            {
-                ColorId = GetCoulourId(car.Colour),
-                ModelId = GetModelId(car.Model, car.Manufacturer,car.Type, car.NumberOfSeats),
-                Year = car.Year,
-                Power = car.Power,
-                Price = car.Price,
-                DealerId = GetDealerId(car.Dealer)
-                
-            };
+            var newCar = this.modelsFactory.CreateCar();
+
+            newCar.ColorId = GetCoulourId(car.Colour);
+            newCar.ModelId = GetModelId(car.Model, car.Manufacturer, car.Type, car.NumberOfSeats);
+            newCar.Year = car.Year;
+            newCar.Power = car.Power;
+            newCar.Price = car.Price;
+            newCar.DealerId = GetDealerId(car.Dealer);
 
             return newCar;
         }
         private int GetDealerId(string dealerName)
         {
-            var id = this.db.Dealers.Where(x => x.Name == dealerName).Select(x => x.Id).FirstOrDefault();
+            var id = this.dealers.All().Where(x => x.Name == dealerName).Select(x => x.Id).FirstOrDefault();
 
             if (id == 0)
             {
-                var newDealer = new Dealer
-                {
-                    Name = dealerName,
-                    
-                };
+                var newDealer = this.modelsFactory.CreateDealer();
+                newDealer.Name = dealerName;
 
-                this.db.Dealers.Add(newDealer);
-                this.db.SaveChanges();
+                this.dealers.Add(newDealer);
+                this.unitOfWork.Commit();
 
-                id = this.db.Dealers.Where(x => x.Name == dealerName).Select(x => x.Id).First();
+                id = this.dealers.All().Where(x => x.Name == dealerName).Select(x => x.Id).First();
             }
 
             return id;
         }
         private int GetModelId(string modelName, string manufacturerName, string cartypeName, int numberOfSeats)
         {
-            var id = this.db.Models.Where(x => x.Name == modelName).Select(x => x.Id).FirstOrDefault();
+            var id = this.models.All().Where(x => x.Name == modelName).Select(x => x.Id).FirstOrDefault();
 
             if (id == 0)
             {
-                var newModel = new Model
-                {
-                    Name = modelName,
-                    CarTypeId = GetCartypeId(cartypeName),
-                    NumberOfSeats = numberOfSeats,
-                    ManufacturerId = GetManufacturerId(manufacturerName)                    
-                };
+                var newModel = this.modelsFactory.CreateModel();
+                newModel.Name = modelName;
+                newModel.CarTypeId = GetCartypeId(cartypeName);
+                newModel.NumberOfSeats = numberOfSeats;
+                newModel.ManufacturerId = GetManufacturerId(manufacturerName);               
 
-                this.db.Models.Add(newModel);
-                db.SaveChanges();
-                id = this.db.Models.Where(x => x.Name == modelName).Select(x => x.Id).First();
+                this.models.Add(newModel);
+                unitOfWork.Commit();
+                id = this.models.All().Where(x => x.Name == modelName).Select(x => x.Id).First();
             }
 
             return id;
@@ -105,20 +120,17 @@ namespace WayneCarCorps.Importer
 
         private int GetManufacturerId(string manufacturerName)
         {
-            var id = this.db.Manufacturers.Where(x => x.Name == manufacturerName).Select(x => x.Id).FirstOrDefault();
+            var id = this.manufacturers.All().Where(x => x.Name == manufacturerName).Select(x => x.Id).FirstOrDefault();
 
             if (id == 0)
             {
-                var newManufacturer = new Manufacturer
-                {
-                    Name = manufacturerName,
-                    AddressId = null
-                };
+                var newManufacturer = this.modelsFactory.CreateManufacturer();
+                newManufacturer.Name = manufacturerName;
+                newManufacturer.AddressId = null;
+                this.manufacturers.Add(newManufacturer);
+                this.unitOfWork.Commit();
 
-                this.db.Manufacturers.Add(newManufacturer);
-                this.db.SaveChanges();
-
-                id = this.db.Manufacturers.Where(x => x.Name == manufacturerName).Select(x => x.Id).First();
+                id = this.manufacturers.All().Where(x => x.Name == manufacturerName).Select(x => x.Id).First();
             }
 
             return id;
@@ -126,18 +138,17 @@ namespace WayneCarCorps.Importer
 
         private int GetCartypeId(string cartypeName)
         {
-            var id = this.db.CarTypes.Where(x => x.Name == cartypeName).Select(x => x.Id).FirstOrDefault();
+            var id = this.carTypes.All().Where(x => x.Name == cartypeName).Select(x => x.Id).FirstOrDefault();
 
             if (id == 0)
             {
-                var newCartype = new CarType
-                {
-                    Name = cartypeName
-                };
-                this.db.CarTypes.Add(newCartype);
-                db.SaveChanges();
+                var newCartype = this.modelsFactory.CreateCarType();
+                newCartype.Name = cartypeName;
+              
+                this.carTypes.Add(newCartype);
+                this.unitOfWork.Commit();
 
-                id = this.db.CarTypes.Where(x => x.Name == cartypeName).Select(x => x.Id).First();
+                id = this.carTypes.All().Where(x => x.Name == cartypeName).Select(x => x.Id).First();
             }
 
             return id;
@@ -145,21 +156,18 @@ namespace WayneCarCorps.Importer
 
         private int GetCoulourId(string colour)
         {
-            var Id = this.db.Colors.Where(x => x.Name == colour).Select(x => x.Id).FirstOrDefault();
+            var Id = this.colors.All().Where(x => x.Name == colour).Select(x => x.Id).FirstOrDefault();
 
             if (Id == 0)
             {
-                var newColor = new Color
-                {
-                    Name = colour
-                };
+                var newColor = this.modelsFactory.CreateColor();
+                newColor.Name = colour;             
 
-                this.db.Colors.Add(newColor);
-                this.db.SaveChanges();
+                this.colors.Add(newColor);
+                this.unitOfWork.Commit();
 
-                Id = this.db.Colors.Where(x => x.Name == colour).Select(x => x.Id).First();
+                Id = this.colors.All().Where(x => x.Name == colour).Select(x => x.Id).First();
             }
-
             return Id;
         }
 

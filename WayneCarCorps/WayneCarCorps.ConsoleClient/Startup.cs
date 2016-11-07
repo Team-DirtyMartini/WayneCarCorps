@@ -10,6 +10,10 @@ using WayneCarCorps.Data.Migrations;
 using WayneCarCorps.JsonHandler;
 using WayneCarCorps.MongoDBModels;
 using WayneCarCorps.XmlHandler;
+using Ninject;
+using System.Reflection;
+using WayneCarCorps.Importer;
+
 
 namespace WayneCarCorps.ConsoleClient
 {
@@ -18,15 +22,19 @@ namespace WayneCarCorps.ConsoleClient
         public static void Main(string[] args)
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<WayneCarCorpsContext, Configuration>());
-            using (var ctx = new WayneCarCorpsContext())
-            {
-                Console.WriteLine(ctx.Cars.Count());
-            }
+            var db = new WayneCarCorpsContext();
+            db.Database.CreateIfNotExists();
+            var cars = new MongoDBExtractor<MongoCar>().GetEntitiesCollection("Cars");
+            var kernel = BootstrapNinject();
+            var carsImporter = kernel.Get<CarsImporter>();
+            carsImporter.import(cars);
+            var xmlImporter = kernel.Get<XmlImporter>();
+            xmlImporter.Import();
 
-            ExcelReader.ExtractZipFiles();
-            PdfExporter.CreatePdfTable();
-            XmlReportExporter.GetSalesForEachDealership();
-            JsonWriter.WriteToJson();
+            //ExcelReader.ExtractZipFiles();
+            //PdfExporter.CreatePdfTable();
+            //XmlReportExporter.GetSalesForEachDealership();
+            //JsonWriter.WriteToJson();
             //UpdateMongoDB();
         }
 
@@ -48,6 +56,13 @@ namespace WayneCarCorps.ConsoleClient
             carsCollection.Add(new MongoCar("BMW", "M3", "Sport", 2016, "Blue", 530, 2, 56000, "Daru Car"));
 
             return carsCollection;
+        }
+
+        private static IKernel BootstrapNinject()
+        {
+            var kernel = new StandardKernel();
+            kernel.Load(Assembly.GetExecutingAssembly());
+            return kernel;
         }
     }
 }
