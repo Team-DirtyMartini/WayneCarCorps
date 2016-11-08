@@ -11,6 +11,9 @@ using WayneCarCorps.XmlHandler;
 using Ninject;
 using System.Reflection;
 using WayneCarCorps.Importer;
+using WayneCarCorps.MySQL;
+using WayneCarCorps.MySQL.FluentModels;
+using WayneCarCorps.MySQL.Models;
 
 namespace WayneCarCorps.ConsoleClient
 {
@@ -41,6 +44,11 @@ namespace WayneCarCorps.ConsoleClient
 
             var xmlExporter = kernel.Get<XmlReportExporter>();
             xmlExporter.GetSalesForEachDealership();
+
+            FluentModelContext context = new FluentModelContext();
+            OpenAccessRepository<SalesReport> report = new OpenAccessRepository<SalesReport>(context);
+            ExcelWriter.WriteToExcel(report);
+
             //UpdateMongoDB();
         }
 

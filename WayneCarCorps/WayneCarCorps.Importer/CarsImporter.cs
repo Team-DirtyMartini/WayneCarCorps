@@ -47,7 +47,7 @@ namespace WayneCarCorps.Importer
             //this.db.Configuration.ValidateOnSaveEnabled = false;
             foreach (var car in cars)
             {
-                this.cars.Add(CreateCar(car));
+                this.cars.Add(this.CreateCar(car));
                 //counter++;
                 //if (counter % 20 == 0)
                 //{

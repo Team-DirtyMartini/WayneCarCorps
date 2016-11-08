@@ -12,6 +12,9 @@ namespace ExcelDataHandler
         private const string ZipFileToUnpackLocation = "../../../Sales-Reports.zip";
         private const string PathToUnpackZip = "../../../Reports";
 
+        private const string ConnectionString =
+            @"Provider= Microsoft.ACE.OLEDB.12.0;Data Source = ..\..\..\Reports\{0};Extended Properties = ""Excel 12.0 Xml;HDR=YES""";
+
         private IRepository<Sale> repositorySales;
         private IRepository<Dealer> repositoryDealers;
         private IUnitOfWork unitOfWork;
@@ -44,7 +47,7 @@ namespace ExcelDataHandler
 
         private void GetExcelInformation(string fileName)
         {
-            string connectionString = @"Provider= Microsoft.ACE.OLEDB.12.0;Data Source = ..\..\..\Reports\" + fileName + @";Extended Properties = ""Excel 12.0 Xml;HDR=YES""";
+            string connectionString = string.Format(ConnectionString, fileName);
             OleDbConnection dbConnection = new OleDbConnection(connectionString);
 
             dbConnection.Open();

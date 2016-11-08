@@ -38,6 +38,11 @@ namespace WayneCarCorps.MySQL.ConsoleClient
             return sales;
         }
 
+        public static IEnumerable<SalesReport> GetSalesReportsFromMySqlDatabase(OpenAccessRepository<SalesReport> salesRepository)
+        {
+            return salesRepository.All().ToList();
+        }
+
         private static void ImportToMySqlDatabase(OpenAccessRepository<SalesReport> salesRepository, OpenAccessUnitOfWork unitOfWork, IEnumerable<SalesReport> readFiles)
         {
             int count = 0;
