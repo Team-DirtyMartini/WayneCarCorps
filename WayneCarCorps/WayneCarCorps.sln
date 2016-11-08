@@ -27,8 +27,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WayneCarCorps.MySQL", "Wayn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WayneCarCorps.MySQL.Importer", "WayneCarCorps.MySQL.ConsoleClient\WayneCarCorps.MySQL.Importer.csproj", "{BB4B5458-B1A9-40EE-A3FC-42D0F928B85A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WayneCarCorps.WpfClient", "WayneCarCorps.WpfClient\WayneCarCorps.WpfClient.csproj", "{03D9728E-6E0E-41C4-BC7A-0D446EAA08F1}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,10 +81,6 @@ Global
 		{BB4B5458-B1A9-40EE-A3FC-42D0F928B85A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB4B5458-B1A9-40EE-A3FC-42D0F928B85A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB4B5458-B1A9-40EE-A3FC-42D0F928B85A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{03D9728E-6E0E-41C4-BC7A-0D446EAA08F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{03D9728E-6E0E-41C4-BC7A-0D446EAA08F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{03D9728E-6E0E-41C4-BC7A-0D446EAA08F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{03D9728E-6E0E-41C4-BC7A-0D446EAA08F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

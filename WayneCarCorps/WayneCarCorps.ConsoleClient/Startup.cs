@@ -45,9 +45,11 @@ namespace WayneCarCorps.ConsoleClient
             var xmlExporter = kernel.Get<XmlReportExporter>();
             xmlExporter.GetSalesForEachDealership();
 
+
+            // CHANGE PASSWORD IN CONNECTIONS STRING
             FluentModelContext context = new FluentModelContext();
             OpenAccessRepository<SalesReport> report = new OpenAccessRepository<SalesReport>(context);
-            ExcelWriter.WriteToExcel(report);
+            //ExcelWriter.WriteToExcel(report);
 
             //UpdateMongoDB();
         }
